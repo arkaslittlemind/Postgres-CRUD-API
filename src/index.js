@@ -22,16 +22,17 @@ app.use("/api/v1", userRoutes);
 import errorHandling from './middlewares/errorHandler.js';
 app.use(errorHandling);
 
+// Create table before starting the server
+import createUserTable from './data/createUserTable.js';
+createUserTable();
+
 // Test Postgres Connection
 app.get("/", async (req, res) => {
-    try {
-        const result = await pool.query("SELECT current_database()");
-        res.send(`The database name is : ${result.rows[0].current_database}`);
-    } catch (error) {
-        console.log(error);
-        res.json(json({ error: "Internal Server Error" }));
-    }
-})
+    console.log("Start");
+    const result = await pool.query("SELECT current_database()");
+    console.log("result", result.rows);
+    res.send(`The database name is : ${result.rows[0].current_database}`);
+});
 
 
 app.listen(PORT, () => {

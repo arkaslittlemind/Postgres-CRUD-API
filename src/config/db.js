@@ -5,12 +5,6 @@ const { Pool } = pkg;
 
 dotenv.config();
 
-// console.log(process.env.DB_USER)
-// console.log(process.env.DB_HOST)
-// console.log(process.env.DB_NAME)
-// console.log(process.env.DB_PASSWORD)
-// console.log(process.env.DB_PORT)
-
 const pool = new Pool({
     user: process.env.DB_USER,
     host: process.env.DB_HOST,
@@ -20,7 +14,7 @@ const pool = new Pool({
 });
 
 pool.on("connect", () => {
-    console.log("⚙️ Connection pool established with Database")
+    console.log("⚙️  Connection pool established with Database")
 });
 
 export default pool;
