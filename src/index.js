@@ -14,7 +14,8 @@ app.use(express.json());
 app.use(cors());
 
 // Routes
-
+import userRoutes from "./routes/userRoutes.js";
+app.use("/api/v1", userRoutes);
 
 
 // Error Handling
@@ -33,5 +34,5 @@ app.get("/", async (req, res) => {
 
 
 app.listen(PORT, () => {
-    console.log(`🚀Server is running on port ${PORT}`)
+    console.log(`🚀 Server is running on port ${PORT}`)
 });
