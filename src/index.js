@@ -19,7 +19,8 @@ app.use("/api/v1", userRoutes);
 
 
 // Error Handling
-
+import errorHandling from './middlewares/errorHandler.js';
+app.use(errorHandling);
 
 // Test Postgres Connection
 app.get("/", async (req, res) => {
